@@ -31,16 +31,21 @@ app.get('/', (req, res) => {
 app.get('/get-player-by-id/:id', (req, res) => {
     const id = req.params.id;
 
-    playerData.map(item => {
+    let foundPlayer = null;
+
+    playerData.forEach((item) => {
         if (item.id === +id) {
             foundPlayer = item;
         }
-    })
-
-    res.json({
-        message: 'success',
-        payload: req.params
     });
+
+    if (!foundPlayer) {
+        res.status(404)
+            .json({message: "failure", payload: "Sorry, player not found"})
+    } else {
+        res.json({message: "success", payload: foundPlayer})
+    }
+
 })
 
 app.get('/', (req, res) => {
