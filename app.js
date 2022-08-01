@@ -18,7 +18,7 @@ app.use(logger("dev"));
 //Dummy data
 let playerData = [
     {id: 1, name: 'Kobe', team: 'lakers', points: 50},
-    {id: 1, name: 'Shaq', team: 'Magic', points: 100}
+    {id: 2, name: 'Shaq', team: 'Magic', points: 100}
 ]
 
 app.get('/', (req, res) => {
@@ -45,8 +45,31 @@ app.get('/get-player-by-id/:id', (req, res) => {
     } else {
         res.json({message: "success", payload: foundPlayer})
     }
+});
 
+// Create a GET request - get-player-by-name/:name
+app.get('/get-player-by-name/:name', (req, res) => {
+    res.json({message: 'success', payload: 'done'})
+    // const name = req.params.name;
+    //
+    // let foundPlayerByName = null;
+    //
+    // playerData.forEach((player) => {
+    //     if (player.name === name) {
+    //         foundPlayerByName = name;
+    //     }
+    // })
+    // if (!foundPlayerByName) {
+    //     res.status(404)
+    //         .json({message: "failure", payload: "Player by that name not found"})
+    // } else {
+    //     res.json({message: "success", payload: foundPlayerByName})
+    // }
 })
+
+
+
+
 
 app.get('/', (req, res) => {
     res
